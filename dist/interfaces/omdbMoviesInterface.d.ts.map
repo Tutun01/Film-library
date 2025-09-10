@@ -1,0 +1,1 @@
+{"version":3,"file":"omdbMoviesInterface.d.ts","sourceRoot":"","sources":["../../src/interfaces/omdbMoviesInterface.ts"],"names":[],"mappings":"AACA,MAAM,WAAW,mBAAmB;IAChC,KAAK,EAAE,MAAM,CAAC;IACd,IAAI,EAAE,MAAM,CAAC;IACb,IAAI,EAAE,MAAM,CAAC;CAChB"}
