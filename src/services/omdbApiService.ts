@@ -35,13 +35,13 @@ export function getMovieElement(movieElements: omdbMoviesInterface[]): HTMLDivEl
         singleMovieDiv.classList.add("movie-card");
 
         const movieTitle = document.createElement('h1');
-        movieTitle.innerText = `${movie.Title}`;
+        movieTitle.textContent = <string> movie.Title;
 
         const movieYear = document.createElement('p');
-        movieYear.innerText = `Year: ${movie.Year}`;
+        movieYear.textContent = <string> `Year: ${movie.Year}`;
 
         const movieType = document.createElement('p');
-        movieType.innerText = `Type: ${movie.Type}`;
+        movieType.textContent = <string> `Type: ${movie.Type}`;
 
         singleMovieDiv.append(movieTitle, movieYear, movieType);
         moviesDiv.appendChild(singleMovieDiv);
