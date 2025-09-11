@@ -1,6 +1,6 @@
 export interface ApiResponseInterface {
     config: {},
-    data: {},
+    data: ApiResponseErrorInterface | ApiSuccessInterface,
     headers: {},
     request: {},
     status: string,
