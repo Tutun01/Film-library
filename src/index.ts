@@ -1,21 +1,38 @@
-import {callOMDBApi, getMovieElement} from "./services/omdbApiService";
+import {callOMDBApi} from "./services/omdbApiService";
 import {generateYear} from "./helpers/yearGenerateHelper";
+import {ApiResponseErrorInterface} from "./interfaces/ApiResponseErrorInterface";
+import {ApiSuccessInterface} from "./interfaces/ApiSuccessInterface";
+import {listMovieResults} from "./helpers/movieElementHelper";
+import {getAllMovieSearches, rememberMovieSearch} from "./repository/movieStorage";
+import {SingleMovieSearch} from "./interfaces/movieStorage/singleMovieSearch";
+import {clearMovieStorage} from "./repository/movieStorage";
 
-
-
-
+const searchMovieElement = document.getElementById('searchMovie') as HTMLButtonElement;
+const movieList = document.getElementById('movieList') as HTMLDivElement;
 const yearSelect = document.getElementById('movieYears') as HTMLSelectElement;
+const existingMoviesDiv = document.getElementById('existingMovies') as HTMLDivElement;
+const clearAllSearches = document.getElementById('ClearAllSearches') as HTMLButtonElement;
 
 generateYear(1960, yearSelect, 2025);
 
-const searchMovieElement = document.getElementById('searchMovie') as HTMLButtonElement;
-const movieListDiv = document.getElementById('movieList') as HTMLDivElement;
+const existingMovies:SingleMovieSearch[] = getAllMovieSearches();
+existingMovies.forEach((movie:SingleMovieSearch) => {
+    const movieLabelTitle = document.createElement("div") as HTMLDivElement;
+    movieLabelTitle.textContent = `${movie.name} ${movie.year}`;
+    existingMoviesDiv.append(movieLabelTitle);
+});
+
+clearAllSearches.addEventListener('click', ():void => {
+    clearMovieStorage();
+    existingMoviesDiv.innerHTML = '';
+});
+
 
 searchMovieElement.addEventListener('click', async () => {
 
     const movieNameElement = document.getElementById("movieName") as HTMLInputElement;
 
-    movieListDiv.innerHTML = '';
+    movieList.innerHTML = '';
 
     if (movieNameElement.value.trim() === '') {
         alert('Please enter a valid movie name');
@@ -27,18 +44,34 @@ searchMovieElement.addEventListener('click', async () => {
         {key: 'y', value: yearSelect.value}
     ]);
 
-    if (response.data.Response === "False") {
-        movieListDiv.innerHTML = 'We don\'t currently have the movie you\'re looking for, take a look at some of the following suggestions.';
 
-        response = await callOMDBApi([{ key: 's', value: movieNameElement.value }]);
-         if (response.data.Response === "True" && response.data.Search)
-        {
-            const moviesContainer = getMovieElement(response.data.Search);
-            movieListDiv.append(moviesContainer);
-        }
+
+    if (response.data.Response === 'False') {
+
+        const errorData = response.data as ApiResponseErrorInterface;
+
+        const errorMessage = document.createElement('h2') as HTMLHeadingElement;
+        errorMessage.textContent =
+            errorData.Error + " Here are some recommendations that are similar to what you were searching:";
+        movieList.append(errorMessage);
+
+
+        response = await callOMDBApi([
+            { key: 's', value: movieNameElement.value }
+        ]);
+
     } else {
-        const moviesContainer:HTMLDivElement = getMovieElement(response.data.Search);
-        movieListDiv.append(moviesContainer);
+
+        rememberMovieSearch({
+            name: movieNameElement.value,
+            year: yearSelect.value
+        });
     }
 
+
+    const successData = response.data as ApiSuccessInterface;
+    listMovieResults(successData.Search, movieList)
+
+
 });
+
