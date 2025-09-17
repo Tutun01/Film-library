@@ -25,28 +25,6 @@ export async function callOMDBApi(params: ApiParamsInterface[]):Promise<ApiRespo
     return await axios.get(url);
 }
 
-export function getMovieElement(movieElements: omdbMoviesInterface[]): HTMLDivElement {
 
-    const moviesDiv = document.createElement('div');
-    moviesDiv.classList.add("movies-container");
-
-    movieElements.forEach(movie => {
-        const singleMovieDiv = document.createElement('div');
-        singleMovieDiv.classList.add("movie-card");
-
-        const movieTitle = document.createElement('h1');
-        movieTitle.textContent = <string> movie.Title;
-
-        const movieYear = document.createElement('p');
-        movieYear.textContent = <string> `Year: ${movie.Year}`;
-
-        const movieType = document.createElement('p');
-        movieType.textContent = <string> `Type: ${movie.Type}`;
-
-        singleMovieDiv.append(movieTitle, movieYear, movieType);
-        moviesDiv.appendChild(singleMovieDiv);
-    });
-    return moviesDiv;
-}
 
 
