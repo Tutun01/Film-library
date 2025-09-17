@@ -66,6 +66,12 @@ searchMovieElement.addEventListener('click', async () => {
             name: movieNameElement.value,
             year: yearSelect.value
         });
+
+        const movieLabelTitle = document.createElement("div") as HTMLDivElement;
+        movieLabelTitle.textContent = `${movieNameElement.value} ${yearSelect.value}`;
+        existingMoviesDiv.append(movieLabelTitle);
+
+
     }
 
 
