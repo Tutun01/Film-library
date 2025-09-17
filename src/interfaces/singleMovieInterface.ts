@@ -1,4 +1,4 @@
-interface SingleMovieInterface {
+export interface SingleMovieInterface {
     Title?: string;
     Year?: string;
     Rated?: string;
