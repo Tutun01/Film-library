@@ -1,5 +1,7 @@
-interface ApiSuccessInterface {
-    Response: string,
-    Search: SingleMovieInterface | SingleMovieInterface[],
-    totalResults: string,
+import { MovieSearchResult } from "./MovieSearchResult";
+
+export interface ApiSuccessInterface {
+    Response: "True";
+    Search: MovieSearchResult[];
+    totalResults: string;
 }
