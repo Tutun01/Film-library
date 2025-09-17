@@ -1,40 +1,124 @@
-.movies-container {
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #222;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+
+form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+input,
+select,
+button {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #0078ff;
+    box-shadow: 0 0 0 3px rgba(0, 120, 255, 0.2);
+}
+
+button {
+    background: #0078ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+button:hover {
+    background: #005fcc;
+}
+
+
+#ClearAllSearches {
+    background: #f44336;
+    margin-bottom: 1rem;
+}
+
+#ClearAllSearches:hover {
+    background: #d32f2f;
+}
+
+
+#movieList {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 1rem;
 }
 
-.movie-card {
-    background: #1e1e1e;
-    color: #f1f1f1;
+#movieList div {
+    background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
     text-align: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    padding: 15px;
+    transition: transform 0.2s ease;
 }
 
-.movie-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+#movieList div:hover {
+    transform: translateY(-5px);
 }
 
-.movie-card h1 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    color: #ffcc00;
+#movieList h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
 }
 
-.movie-card p {
-    margin: 4px 0;
-    font-size: 0.95rem;
-    color: #ddd;
+#movieList img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
 }
 
-@media (max-width: 600px) {
-    .movies-container {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    }
+#movieList p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+
+#existingMovies {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+#existingMovies div {
+    background: #e0f2ff;
+    color: #005fcc;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
 }
