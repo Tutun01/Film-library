@@ -1,1 +1,1 @@
-{"version":3,"file":"ApiParamsInterface.d.ts","sourceRoot":"","sources":["../../src/interfaces/ApiParamsInterface.ts"],"names":[],"mappings":"AACA,MAAM,WAAW,kBAAkB;IAC/B,GAAG,EAAE,MAAM,CAAC;IACZ,KAAK,EAAE,MAAM,CAAC;CACjB"}
+{"version":3,"file":"ApiParamsInterface.d.ts","sourceRoot":"","sources":["../../src/interfaces/ApiParamsInterface.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,kBAAkB;IAC/B,GAAG,EAAE,MAAM,CAAC;IACZ,KAAK,EAAE,MAAM,CAAC;CACjB"}
