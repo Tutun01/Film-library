@@ -1,4 +1,4 @@
-import { MovieSearchResult } from "./MovieSearchResult";
+import {MovieSearchResult} from "./MovieSearchResult";
 
 export interface ApiSuccessInterface {
     Response: "True";

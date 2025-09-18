@@ -1,4 +1,3 @@
-
 import {ApiResponseErrorInterface} from "./ApiResponseErrorInterface";
 import {ApiSuccessInterface} from "./ApiSuccessInterface";
 

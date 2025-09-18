@@ -1,11 +1,10 @@
 import {SingleMovieSearch} from "../interfaces/movieStorage/singleMovieSearch";
 
-export function rememberMovieSearch(movie: SingleMovieSearch):void {
-
+export function rememberMovieSearch(movie: SingleMovieSearch): void {
 
 
     const existingMovies = getAllMovieSearches();
-    const alredyExists:boolean = existingMovies.some((m:SingleMovieSearch) =>
+    const alredyExists: boolean = existingMovies.some((m: SingleMovieSearch) =>
         m.name.toLowerCase() === movie.name.toLowerCase()
         && m.year === movie.year
     );
@@ -28,6 +27,6 @@ export function getAllMovieSearches(): SingleMovieSearch [] {
     return data ? JSON.parse(data) : [];
 }
 
-export function clearMovieStorage():void {
+export function clearMovieStorage(): void {
     localStorage.removeItem("rememberedMovies");
 }

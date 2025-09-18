@@ -1,4 +1,3 @@
-
 export interface MovieSearchResult {
     Title: string;
     Year: string;
